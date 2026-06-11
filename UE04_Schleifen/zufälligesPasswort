@@ -1,3 +1,13 @@
+/*
+ * Aufgabe: Zufälliges Passwort
+ *
+ * Erstelle ein Programm, das ein zufälliges Programm generiert.
+ * Folgende Anforderungen: Die Passwortlänge beträgt mind. 10 Zeichen. Das Passwort soll nur aus Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen bestehen.
+ * Lassen Sie die Länge des Passwortes beim Programmstart vom Bediener eine
+ * Thema: Schleifen und Random
+ */
+
+
 namespace ZufallsGenerator_3
 {
 	internal class Program
