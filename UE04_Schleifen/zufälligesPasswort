@@ -9,18 +9,18 @@ namespace ZufallsGenerator_3
 			int anzahl = int.Parse(Console.ReadLine());
 			
 			Random random = new Random();
-      string password = "";
+            string password = "";
 
-        do
-        {
-            for (int i = 0; i < 10; i++)
+            do
             {
+                for (int i = 0; i < 10; i++)
+                {
                 int generiert = random.Next(33, 127);
                 password += ((char)generiert).ToString();
-            }
-        } while (anzahl < 10);
+                }
+            } while (anzahl < 10);
 
-        Console.WriteLine($"Your generated password is: {password}");
-      }
-   }
+            Console.WriteLine($"Your generated password is: {password}");
+         }
+     }
 }
