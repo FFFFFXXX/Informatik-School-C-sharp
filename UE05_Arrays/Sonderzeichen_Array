@@ -1,3 +1,12 @@
+/*
+ * Aufgabe: Array Sonderzeichen suchen
+ *
+ * Schreiben SIe ein Programm, welches:
+ * vom User die Eingabe einer Zeichenkette erwartet
+ * anschlißend prüft, ob in der Zeichenkette Sonderzeichen vorkommen
+ * ausgibt an welcher Stelle, welches Zeichen gefunden wurde
+ */
+
 namespace Sonderzeichen_Array
 {
     internal class Program
