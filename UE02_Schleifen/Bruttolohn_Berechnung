@@ -39,7 +39,7 @@ namespace Berechnung_Bruttolohn
 
             decimal BasisLohn = Iststunden * Stundenlohn;  // Basis-Lohn für die regulär geleistete Arbeit
 
-                  if (Ueberstunden > (Sollstunden * 0.10m))
+                  if (Ueberstunden > (Sollstunden * 1.10m))
                   {
                       Ueberstundenzuschlag = Stundenlohn * 0.3m;
                       Bruttolohn = (Iststunden * Stundenlohn) + Ueberstundenzuschlag;
