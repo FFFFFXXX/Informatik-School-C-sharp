@@ -32,7 +32,12 @@ internal class Program
         int Alter = int.Parse(Console.ReadLine());
 
 
-    bool hatAnspruch = false;
+        Console.WriteLine("Geben Sie hier die Anzahl Ihrer Kinder ein: ");
+        int Anzahl_Kinder = int.Parse(Console.ReadLine());
+
+        bool hatAnspruch = false;
+
+
 
         string Referat = Buchstabe_Referat;
 
@@ -47,6 +52,8 @@ internal class Program
             case "C":
                 hatAnspruch = (Anzahl_Jahre > 10);
                 break;
+            case "D":
+                hatAnspruch = (Anzahl_Jahre >= 10 || Anzahl_Kinder >= 3); 
         }
         if (hatAnspruch)
         {
