@@ -3,7 +3,7 @@
 * gestalten Sie die Funktion so flexibel, dass der Aufrufer unterschiedliche Menüpunkte übergeben kann.
 */
 
-namespace Uebung_zu_Funktionen
+namespace ConsoleApp2
 {
     internal class Program
     {
