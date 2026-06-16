@@ -41,19 +41,18 @@ namespace Berechnung_Bruttolohn
 
                   if (Ueberstunden > (Sollstunden * 0.10m))
                   {
-                      Ueberstundenzuschlag = Stundenlohn * 0.25m;
+                      Ueberstundenzuschlag = Stundenlohn * 0.3m;
                       Bruttolohn = (Iststunden * Stundenlohn) + Ueberstundenzuschlag;
                   }
                   else if (Ueberstunden > 0)
                   {
-                      Ueberstundenzuschlag = Stundenlohn * 0.30m;
+                      Ueberstundenzuschlag = Stundenlohn * 0.25m;
                       Bruttolohn = (Iststunden * Stundenlohn) + Ueberstundenzuschlag;
                   }
                   else
                   {
                       Bruttolohn = BasisLohn;
                   }
-            Console.WriteLine($"\n--- Abrechnung ---");
             Console.WriteLine($"Geleistete Überstunden: {Math.Max(0, Ueberstunden)} Std.");
             Console.WriteLine($"Davon extra Zuschlag: {Ueberstundenzuschlag:F2} Euro");
             Console.WriteLine($"Dein Bruttolohn beträgt: {Bruttolohn:F2} Euro.");
