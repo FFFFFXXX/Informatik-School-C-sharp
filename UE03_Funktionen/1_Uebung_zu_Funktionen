@@ -1,0 +1,28 @@
+/* Erstellen Sie eine Funktion mit der man ein Menü darstellen kann und di Eingabe des Nutzers abfragen und zurückgeben kann.
+* Bedenken Sie welche Signatur die Funktion mindestens besitzen muss, damit die o.G Anforderungen erfüllt sind
+* gestalten Sie die Funktion so flexibel, dass der Aufrufer unterschiedliche Menüpunkte übergeben kann.
+*/
+
+namespace Uebung_zu_Funktionen
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            string[] p = { "Datei", "Bearbeiten ", "Impressum " };
+            string[] Eingabe = Menu(p);
+
+        }
+        static string[] Menu(string[] p)
+        {
+            string[] Eingabe = new string[p.Length];
+
+            for (int i = 0; i < p.Length; i++)
+            {
+                Console.WriteLine(p[i]);
+                Eingabe[i] = Console.ReadLine();
+            }
+            return Eingabe;
+        }
+    }
+}
