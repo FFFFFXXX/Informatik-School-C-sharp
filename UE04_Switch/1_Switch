@@ -1,0 +1,60 @@
+/*
+ * Aufgabenstellung:
+Erstellen Sie ein Programm zur Ermittlung von Weihnachtsgeld für Mitarbeiter im öffentlichen 
+Dienst.
+Der Benutzer muss zunächst auswählen, in welchem Referat (A, B, C oder D) der Mitarbeiter 
+beschäftigt ist. Anschließend ist zu prüfen und am Bildschirm auszugeben, ob der jeweilige 
+Mitarbeiter Anspruch auf Weihnachtsgeld hat oder nicht. Es gelten folgende Bedingungen:
+Referat A:
+Weihnachtsgeld erhalten Mitarbeiter, die seit zehn Jahren im Betrieb und über 40 Jahre alt sind.
+Referat B:
+Weihnachtsgeld erhalten Mitarbeiter, die seit zehn Jahren im Betrieb oder über 40 Jahre alt sind.
+Referat C:
+Weihnachtsgeld erhalten Mitarbeiter, die seit mehr als zehn Jahren im Betrieb sind.
+Referat D:
+Weihnachtsgeld erhalten Mitarbeiter, die seit mehr als zehn Jahren im Betrieb sind oder mehr als 
+drei Kinder haben.
+
+*/
+namespace switch_Uebung;
+
+internal class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Geben Sie hier den Buchstaben Ihres Referats ein: ");
+        string Buchstabe_Referat = Console.ReadLine();
+
+        Console.WriteLine("Geben Sie hier die Anzahl der Jahre ein, die Sie bereits im Unternehmen tätig sind: ");
+        int Anzahl_Jahre = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Geben Sie hier Ihr aktuelles Alter ein: ");
+        int Alter = int.Parse(Console.ReadLine());
+
+
+    bool hatAnspruch = false;
+
+        string Referat = Buchstabe_Referat;
+
+        switch (Referat)
+        {
+            case "A":
+                hatAnspruch = (Anzahl_Jahre >= 10 && Alter > 40);
+                break;
+            case "B":
+                hatAnspruch = (Anzahl_Jahre >= 10 || Alter > 40);
+                break;
+            case "C":
+                hatAnspruch = (Anzahl_Jahre > 10);
+                break;
+        }
+        if (hatAnspruch)
+        {
+            Console.WriteLine("Sie haben Anspruch auf Weihnachtsgeld.");
+        }
+        else
+        {
+            Console.WriteLine("Sie haben leider keinen Anspruch auf Weihnachtsgeld.");
+        }
+    }
+}
