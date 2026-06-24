@@ -1,0 +1,27 @@
+namespace Mittelwert
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            double z = 16;
+            Console.WriteLine("Die Wurzel von " + z + "ist " + Wurzel(z));
+        }
+
+        static double Wurzel(double zahl)
+        {
+            double w = 1;
+            double Mittelwert = 0;
+            double wNeu;
+
+            for (int i = 0; i < 10; i++)
+            {
+                wNeu = zahl / w;
+                Mittelwert = (w + wNeu) / 2;
+                w = Mittelwert;
+            }
+            return w;
+        }
+
+    }
+}
