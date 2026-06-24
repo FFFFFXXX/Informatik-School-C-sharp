@@ -1,0 +1,36 @@
+namespace BB
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] z = { 5, 3, 8, 2, 7 };
+
+
+
+            //Bubblesort
+            for (int i = 0; i < z.Length - 1; i++)
+            {
+                for (int j = 0; j < z.Length - 1; j++)
+                {
+                    if (z[j] > z[j + 1])
+                    {
+                        int temp = z[j];
+                        z[j] = z[j + 1];
+                        z[j + 1] = temp;
+                    }
+                }
+                anzeige(z);
+            }
+        }
+            private static void anzeige(int[] z)
+            {
+
+                 for (int i = 0; i < z.Length; i++)
+                 {
+                Console.Write(z[i] + " ");
+                }
+            Console.WriteLine();
+        }
+    }
+}
