@@ -1,0 +1,21 @@
+namespace Fakultät
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            int Zahl = 4;
+            Fakultaet(Zahl);
+
+            Console.WriteLine("Fakultät ist: " + Fakultaet(Zahl));
+        }
+
+        static int Fakultaet(int f)
+        {
+            if(f < 1) return 1; // Abbruchbedingung
+            int NeuerName = Fakultaet(f-1) * f;
+            return NeuerName;
+        }
+
+    }
+}
