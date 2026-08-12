@@ -1,0 +1,7 @@
+//
+//Erstellen Sie in einem Konsolenprojekt eine Struktur mit dem NAmen Person, geben Sie ihr die Attribute Name, Vorname, Geburtsdatum und Telefon.
+//
+//schreiben SIe zwei Methoden (SpeicherePerson und LiesPerson), die jeweils ein Array an Personen schreiben bzw. auslesen.
+//
+//Erstellen Sie ein Array mit 3 Personen Datensätzen und speichern und lesen Sie dessen Daten.
+//
