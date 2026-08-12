@@ -5,3 +5,170 @@
 //
 //Erstellen Sie ein Array mit 3 Personen Datensätzen und speichern und lesen Sie dessen Daten.
 //
+using Personenverwaltung;
+using System.Runtime.Versioning;
+using System.Xml.Linq;
+
+namespace Personenverwaltung
+
+{
+
+    public struct Person
+    {
+        public string Name;
+        public string Surname;
+        public DateOnly DateOfBirth;
+        public string Phone;
+    }
+
+    internal class Program
+
+    {
+        static void Main(string[] args)
+        {
+            string fname = @"C:\Test\writer.txt";
+            string jsonFile = @"C:\Test\personen.json";
+
+
+            Person[] testPerson = new Person[]
+            {
+
+                new Person()
+                {
+                    Name = "Lustig",
+                    Surname = "Peter",
+                    DateOfBirth = new DateOnly(1981, 5, 21),
+                    Phone = "0261445599"
+                },
+                 new Person()
+                {
+                    Name = "Bohlen",
+                    Surname = "Dieter",
+                    DateOfBirth = new DateOnly(1977, 9, 6),
+                    Phone = "0261222244"
+                },
+                new Person()
+                {
+                    Name = "Dion",
+                    Surname = "Celine",
+                    DateOfBirth = new DateOnly(1973, 11, 12),
+                    Phone = "0261999333"
+                }
+            };
+
+
+
+
+            // Array für 3 Personen erstellen
+            Person[] personen = new Person[3];
+
+            // Binärdatei Personen speichern
+            SpeicherePerson(fname, testPerson);
+
+            // Binärdatei Personen auslesen
+            LiesPerson(fname, testPerson);
+
+            // JSON-Datei speichern
+            SpeichereDatenJson(jsonFile, testPerson);
+
+            // JSON-Datei auslesen
+            Person[] jsonPersonen = LiesJson(jsonFile);
+
+            // JSON-Daten anzeigen
+            foreach (Person person in jsonPersonen)
+            {
+                Console.WriteLine("Name: " + person.Name);
+                Console.WriteLine("Surname: " + person.Surname);
+                Console.WriteLine("Date of Birth: " + person.DateOfBirth.ToShortDateString());
+                Console.WriteLine("Phone: " + person.Phone);
+                Console.WriteLine();
+            }
+
+
+            Console.ReadKey();
+        }
+        public static void SpeicherePerson(string fileName, Person[] people)
+        {
+            FileStream fs = new FileStream(fileName, FileMode.Create); //Stream erstellen (hier Filestream)
+            BinaryWriter bw = new BinaryWriter(fs); //BinaryWriter erstellen
+
+            bw.Write(people.Length);
+
+            for (int i = 0; i < people.Length; i++)  //schreibe die Elemente 
+            {
+                bw.Write(people[i].Name);
+                bw.Write(people[i].Surname);
+                bw.Write(people[i].DateOfBirth.Year);
+                bw.Write(people[i].DateOfBirth.Month);
+                bw.Write(people[i].DateOfBirth.Day);
+                bw.Write(people[i].Phone);
+            }
+            bw.Close(); //Binary schließen
+            fs.Close(); //Stream schließen
+        }
+
+        public static void SpeichereDatenJson(string fileName, Person[] people)
+        {
+            FileStream fs = new FileStream(fileName, FileMode.Create);
+
+            var options = new System.Text.Json.JsonSerializerOptions
+            {
+                IncludeFields = true
+            };
+
+            System.Text.Json.JsonSerializer.Serialize(fs, people, options);
+
+            fs.Close();
+        }
+
+        public static Person[] LiesJson(string fileName)
+        {
+            FileStream fs = new FileStream(fileName, FileMode.Open);
+
+            var options = new System.Text.Json.JsonSerializerOptions
+            {
+                IncludeFields = true
+            };
+
+            Person[] people = System.Text.Json.JsonSerializer.Deserialize<Person[]>(fs, options);
+
+            fs.Close();
+
+            return people;
+
+        }
+        static void LiesPerson(string fname, Person[] personen)
+        {
+            FileStream fs = new FileStream(fname, FileMode.Open);
+            BinaryReader br = new BinaryReader(fs); //BinaryReader erstellen
+
+            int anzahl = br.ReadInt32();
+
+            for (int i = 0; i < anzahl; i++)    
+            {
+                    personen[i].Name = br.ReadString();
+                    personen[i].Surname = br.ReadString();
+
+                    int jahr = br.ReadInt32();
+                    int monat = br.ReadInt32();
+                    int tag = br.ReadInt32();
+
+                    personen[i].DateOfBirth = new DateOnly(jahr, monat, tag);
+
+                    personen[i].Phone = br.ReadString();
+            }
+            br.Close();
+            fs.Close();
+
+            foreach (Person person in personen)
+            {
+                Console.WriteLine("Name" + person.Name);
+                Console.WriteLine("Surname: " + person.Surname);
+                Console.WriteLine("Date of Birth: " + person.DateOfBirth.ToShortDateString());
+                Console.WriteLine("Phone: " + person.Phone);
+                Console.WriteLine(" ");
+
+            }
+        }
+    }
+}
